@@ -12,9 +12,20 @@ Esta ferramenta simula o cruzamento de dois indivíduos heterozigotos **(Aa x Aa
 Ideal para observar a convergência estatística da segregação fenotípica.
 """)
 
-# Barra Lateral para Parâmetros
+# Barra Lateral com Caixa de Digitação
 st.sidebar.header("Configurações do Experimento")
-n_plantas = st.sidebar.slider("Número de plantas na lavoura (F2):", 10, 5000, 100)
+
+# Agora o aluno pode digitar qualquer valor inteiro
+n_plantas = st.sidebar.number_input(
+    "Número de plantas na lavoura (F2):", 
+    min_value=1, 
+    max_value=1000000, 
+    value=100, 
+    step=100
+)
+
+# Dica pedagógica na barra lateral
+st.sidebar.info("Tente valores pequenos como 10 e valores grandes como 100.000 para ver a convergência estatística.")
 
 # Simulação
 parental = ['A', 'a']
